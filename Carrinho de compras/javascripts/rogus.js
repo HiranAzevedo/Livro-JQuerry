@@ -18,7 +18,7 @@ function writeTotal(value) {
 }
 
 function calculaTotalProducts() {
-	var produtos = $(".products");
+	var produtos = $(".product");
 	var total = 0;
 
 	for (var pos = 0; pos < produtos.length; pos++) {
@@ -31,15 +31,8 @@ function calculaTotalProducts() {
 	return total;
 }
 
-function onDocumentLoad() {
-	var textEdits = document.getElementsByClassName("quantity");
-
-	for (var i = 0; i < textEdits.length; i++) {
-		textEdits[i].onchange = function () {
-			writeTotal(calculaTotalProducts());
-		};
-	}
-}
-
-
-window.onload = onDocumentLoad;
+$(function () {
+	$(".quantity").change(function () {
+		writeTotal(calculaTotalProducts());
+	});
+});
